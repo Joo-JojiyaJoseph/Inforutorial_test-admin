@@ -10,7 +10,7 @@
      <div class="inner-box">
          <div class="cross-icon hidden-bar-closer"><span class="far fa-close"></span></div>
          <div class="logo-box"><a href="index.html" title="Delici - Restaurants HTML Template"><img src="images/resource/sidebar-logo.png" alt="" title="Delici - Restaurants HTML Template"></a></div>
-         
+
          <!-- .Side-menu -->
          <div class="side-menu">
               <ul class="navigation clearfix">
@@ -44,7 +44,7 @@
                  <li><a href="contact-us.html">Contact</a></li>
              </ul>
          </div><!-- /.Side-menu -->
-         
+
          <h2>Visit Us</h2>
          <ul class="info">
              <li>Restaurant St, Delicious City, <br>London 9578, UK</li>
@@ -56,14 +56,14 @@
              <div class="bk-title">Booking request</div>
              <div class="bk-no"><a href="tel:+88-123-123456">+88-123-123456</a></div>
          </div>
-     
+
      </div><!-- / Hidden Bar Wrapper -->
  </section>
  <!-- / Hidden Bar -->
 
  <!--Info Back Drop-->
  <div class="info-back-drop"></div>
- 
+
  <!-- Hidden Bar -->
  <section class="info-bar">
      <div class="inner-box">
@@ -88,7 +88,7 @@
 
  <!-- Banner Section -->
  <section class="banner-section">
-     
+
      <div class="banner-container">
          <div class="banner-slider">
              <div class="swiper-wrapper">
@@ -115,7 +115,7 @@
                                              </div>
                                          </div>
                                      </div>
-                                     
+
                                  </div>
                              </div>
                          </div>
@@ -144,7 +144,7 @@
                                              </div>
                                          </div>
                                      </div>
-                                     
+
                                  </div>
                              </div>
                          </div>
@@ -173,7 +173,7 @@
                                              </div>
                                          </div>
                                      </div>
-                                     
+
                                  </div>
                              </div>
                          </div>
@@ -249,7 +249,7 @@
                      <div class="booking-info">
                          <div class="bk-title">Book Through Call</div>
                          <div class="bk-no"><a href="tel:+80-400-123456">+80 (400) 123 4567</a></div>
-                         
+
                          <div class="link-box">
                              <a href="about.html" class="theme-btn btn-style-two clearfix">
                                  <span class="btn-wrap">
@@ -258,7 +258,7 @@
                                  </span>
                              </a>
                          </div>
-                         
+
                      </div>
                  </div>
              </div>
@@ -689,7 +689,7 @@
                  </div>
 
              </div>
-             
+
              <div class="lower-link-box text-center">
                  <a href="menu-list-1.html" class="theme-btn btn-style-two clearfix">
                      <span class="btn-wrap">
@@ -698,7 +698,7 @@
                      </span>
                  </a>
              </div>
-             
+
          </div>
      </div>
  </section>
@@ -855,14 +855,14 @@
                                      </div>
                                      <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                          <div class="field-inner">
-                                             
+
                                              <button type="submit" class="theme-btn btn-style-one clearfix">
                                                  <span class="btn-wrap">
                                                      <span class="text-one">book a table</span>
                                                      <span class="text-two">book a table</span>
                                                  </span>
                                              </button>
-                                             
+
                                          </div>
                                      </div>
                                  </div>
@@ -1047,53 +1047,6 @@
                      <div class="text desc">Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been the industrys.</div>
                  </div>
              </div>
-
-             <!--Block-->
-             <div class="team-block col-lg-4 col-md-6 col-sm-12">
-                 <div class="inner-box wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="300ms">
-                     <div class="image">
-                         <img src="images/resource/team-2.jpg" alt="">
-                         <div class="overlay-box">
-                             <div class="overlay-inner">
-                                 <!-- Social Box -->
-                                 <ul class="social-box">
-                                     <li><a href="https://www.facebook.com/" class="fab fa-facebook-f"></a></li>
-                                     <li><a href="https://www.twitter.com/" class="fab fa-twitter"></a></li>
-                                     <li><a href="https://dribbble.com/" class="fab fa-dribbble"></a></li>
-                                     <li><a href="https://www.linkedin.com/" class="fab fa-linkedin"></a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                     <h3><a href="menu-list.html">Steave Den</a></h3>
-                     <div class="designation">Master chef</div>
-                     <div class="text desc">Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been the industrys.</div>
-                 </div>
-             </div>
-
-             <!--Block-->
-             <div class="team-block col-lg-4 col-md-6 col-sm-12">
-                 <div class="inner-box wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="600ms">
-                     <div class="image">
-                         <img src="images/resource/team-3.jpg" alt="">
-                         <div class="overlay-box">
-                             <div class="overlay-inner">
-                                 <!-- Social Box -->
-                                 <ul class="social-box">
-                                     <li><a href="https://www.facebook.com/" class="fab fa-facebook-f"></a></li>
-                                     <li><a href="https://www.twitter.com/" class="fab fa-twitter"></a></li>
-                                     <li><a href="https://dribbble.com/" class="fab fa-dribbble"></a></li>
-                                     <li><a href="https://www.linkedin.com/" class="fab fa-linkedin"></a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                     <h3><a href="menu-list.html">Lily Sopy</a></h3>
-                     <div class="designation">Master chef</div>
-                     <div class="text desc">Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been the industrys.</div>
-                 </div>
-             </div>
-
          </div>
      </div>
  </section>
@@ -1198,7 +1151,7 @@
              </div>
 
          </div>
-         
+
          <div class="lower-link-box text-center">
              <a href="#" class="theme-btn btn-style-two clearfix">
                  <span class="btn-wrap">
@@ -1207,7 +1160,7 @@
                  </span>
              </a>
          </div>
-         
+
      </div>
  </section>
 

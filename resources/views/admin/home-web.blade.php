@@ -18,7 +18,33 @@
                 <a href="{{ route('seo.index') }}">
                     <div class="info-stats2">
                         <div class="info-icon danger"><i class="icon-layers2"></i></div>
+                        <div class="sale-num"><h3>Pickup</h3><p>Website order</p></div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                <a href="{{ route('seo.index') }}">
+                    <div class="info-stats2">
+                        <div class="info-icon danger"><i class="icon-layers2"></i></div>
+                        <div class="sale-num"><h3>New order</h3><p>Website order</p></div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                <a href="{{ route('seo.index') }}">
+                    <div class="info-stats2">
+                        <div class="info-icon danger"><i class="icon-layers2"></i></div>
                         <div class="sale-num"><h3>SEO</h3><p>Website SEO</p></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                <a href="{{ route('seo.index') }}">
+                    <div class="info-stats2">
+                        <div class="info-icon danger"><i class="icon-layers2"></i></div>
+                        <div class="sale-num"><h3>Logo</h3><p>Website SEO</p></div>
                     </div>
                 </a>
             </div>

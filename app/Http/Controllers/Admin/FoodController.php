@@ -17,7 +17,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Category::Orderby('id', 'desc')->get();
+        $cats = Category::Orderby('id', 'desc')->get();
         $foods = Food::Orderby('id', 'desc')->get();
         return view('admin.food.category',compact('cats','foods'));
     }
