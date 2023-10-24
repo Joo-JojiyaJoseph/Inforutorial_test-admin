@@ -1,13 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
-use App\Models\Admin\Slider;
 use Illuminate\Support\Facades\Storage;
 
-class SliderController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,19 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider = Slider::Orderby('id', 'desc')->get();
-        return view('admin.web.slider')->with('sliders', $slider );
+        $cats = Category::Orderby('id', 'desc')->get();
+        return view('admin.food.category',compact('cats'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -31,26 +38,41 @@ class SliderController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'subtitle' => 'required',
-            'toptitle' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png'
-
          ]);
 
          $filename = time().'.'.$request->file('image')->extension();
-         $request->image->storeAs('uploads/slider', $filename, 'public');
-
+         $request->image->storeAs('uploads/cats', $filename, 'public');
          $data = [
              'title' => $request->title,
-             'subtitle' => $request->subtitle,
-             'toptitle' => $request->toptitle,
              'image' => $filename,
          ];
-        Slider::create($data);
-
+        Category::create($data);
          return Back()->with('success', 'added');
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -59,34 +81,30 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
-        $slider = Slider::find($id);
+        $cats = Category::find($id);
         $request->validate([
             'title' => 'required',
-
          ]);
 
         if ($request->hasFile('image')) {
             $request->validate(['image' => 'mimes:jpg,jpeg,png']);
-            Storage::delete('/public/uploads/slider/'.$slider->image);
+            Storage::delete('/public/uploads/cats/'.$cats->image);
             $filename = time().'.'.$request->file('image')->extension();
-            $request->image->storeAs('uploads/slider', $filename, 'public');
+            $request->image->storeAs('uploads/cats', $filename, 'public');
         } else {
-            $filename = $slider->image;
+            $filename = $cats->image;
         }
 
         $data = [
             'title' => $request->title,
-            'toptitle' => $request->toptitle,
-            'subtitle' => $request->subtitle,
             'image' => $filename,
         ];
 
 
-        $slider->update($data);
+        $cats->update($data);
         return Back()->with('success', 'Updated Sucessfully');
-
     }
 
     /**
@@ -97,9 +115,8 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        $slider= Slider::findOrFail($id);
-        $slider->delete();
-
-        return redirect(route('quantity.index'))->with('success', 'Deleted Successfully');
+        $cats= Category::findOrFail($id);
+        $cats->delete();
+        return redirect(route('category.index'))->with('success', 'Deleted Successfully');
     }
 }

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class application extends Model
+class Food extends Model
 {
     use HasFactory;
-    
     protected $guarded;
 }
