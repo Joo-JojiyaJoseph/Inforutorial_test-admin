@@ -26,7 +26,6 @@ class AdminHomeController extends Controller
             ];
             return view('admin.home-web', compact('count'));
         }
-
         if($home == 'web') {
             $count = [
 
@@ -34,13 +33,11 @@ class AdminHomeController extends Controller
             return view('admin.home-web', compact('count'));
         }
 
-        if($home == 'product') {
-            $count = [
 
-            ];
+    }
 
-            return view('admin.home-product', compact('count'));
-        }
-
+    function home()
+    {
+        return view('admin.home');
     }
 }

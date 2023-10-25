@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Website slider')
+@section('title', 'Website logo')
 
 @section('content')
 
@@ -12,10 +12,10 @@
             </div>
 
             <div class="col-xs-2 mb-2">
-                <a href="{{ route('home.index') }}" class="btn btn-primary">Back</a>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+                <a href="{{ route('dashboard', 'web') }}" class="btn btn-primary">Back</a>
+                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
                     ADD NEW
-                </button>
+                </button> --}}
 
             </div>
         </div>
@@ -28,43 +28,23 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Title</th>
-                                    <th>Top Title</th>
-                                    <th>Sub Title</th>
-                                    <th>Image</th>
+                                    <th>Logo</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sliders as $slider)
+
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-
-                                        <td>{!! $slider->title !!}</td>
-                                        <td>{{ $slider->toptitle }}</td>
-                                        <td>{{ $slider->subtitle }}</td>
-
+                                        <td>1</td>
                                         <td>
-                                            <img src="{{ asset('/storage/uploads/slider/' . $slider->image) }}"
+                                            <img src="{{ asset('/storage/uploads/logo/' . $logo->image) }}"
                                                 style="width: 100px; height: 50px">
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                                                data-target="#edit{{ $slider->id }}">Edit</button>
-
-                                            <a class="delete_btn btn btn-danger btn-block" data-action="{{ $slider->id }}"
-                                                message="Delete the slider">
-                                                Delete
-                                            </a>
-
-                                            <form style="display: none" id="{{ $slider->id }}" method="post"
-                                                action="{{ route('slider.destroy', $slider) }}">
-                                                @csrf @method('delete')
-                                            </form>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#edit{{ $logo->id }}">Edit</button>
                                         </td>
-
                                     </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -73,17 +53,17 @@
         </div>
     </div>
 
-    <div class="modal fade" id="add" tabindex="-1" role="dialog">
+    {{-- <div class="modal fade" id="add" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">New slider</h5>
+                    <h5 class="modal-title">New logo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
-                <form action="{{ route('slider.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('logo.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group row">
@@ -125,51 +105,29 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    @foreach ($sliders as $slider_edit)
-        <div class="modal fade" id="edit{{ $slider_edit->id }}" tabindex="-1" role="dialog">
+        <div class="modal fade" id="edit{{ $logo->id }}" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit slider</h5>
+                        <h5 class="modal-title">Edit logo</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
-                    <form action="{{ route('slider.update', $slider_edit) }}" method="post"
+                    <form action="{{ route('logo.update', $logo) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group row">
                                 <div class="col-md-6 mb-3">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" name="title"
-                                        value="{{ $slider_edit->title }}">
-                                    @error('title')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label>topTitle</label>
-                                    <input type="text" class="form-control" name="toptitle"
-                                        value="{{ $slider_edit->toptitle }}">
-                                    @error('toptitle')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label>subTitle</label>
-                                    <input type="text" class="form-control" name="subtitle"
-                                        value="{{ $slider_edit->subtitle }}">
-                                    @error('subtitle')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
-
-
-
-                                <div class="col-md-6 mb-3">
-                                    <label>Image (1920px * 1080px)</label>
+                                    <label>Image</label>
                                     <input type="file" class="form-control" name="image">
                                     @error('image')<span class="text-danger">{{ $message }}</span>@enderror
-                                    <img src="{{ asset('/storage/uploads/slider/' . $slider_edit->image) }}"
+                                    <img src="{{ asset('/storage/uploads/logo/' . $logo->image) }}"
                                         style="width: 100px; height: 50px; margin-top: 20px;">
                                 </div>
                             </div>
@@ -183,5 +141,4 @@
                 </div>
             </div>
         </div>
-    @endforeach
 @endsection

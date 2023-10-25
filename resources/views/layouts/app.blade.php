@@ -62,8 +62,7 @@
                     <div class="inner clearfix">
                         <div class="top-left clearfix">
                             <ul class="top-info clearfix">
-                                <li><i class="icon far fa-map-marker-alt"></i> Restaurant St, Delicious City, London
-                                    9578, UK</li>
+                                <li><i class="icon far fa-map-marker-alt"></i> Restaurant </li>
                                 <li><i class="icon far fa-clock"></i> Daily : 8.00 am to 10.00 pm</li>
                             </ul>
                         </div>
@@ -85,8 +84,8 @@
                     <div class="main-box clearfix">
                         <!--Logo-->
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html" title=""><img
-                                        src="{{ asset('storage/images/logo.png') }}" alt=""
+                            <div class="logo"><a href="{{route('index')}}" title=""><img
+                                        src="{{ asset('/storage/uploads/logo/' . $logo->image) }}" alt=""
                                         title=""></a></div>
                         </div>
 
@@ -95,62 +94,19 @@
                             <div class="nav-outer clearfix">
                                 <nav class="main-menu">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="index.html">Home</a>
+                                        <li class="current"><a href="{{route('index')}}">Home</a>
                                         </li>
-                                        <li class="dropdown has-mega-menu"><a href="menu-list.html">Menus</a>
+                                        <li class="dropdown"><a href="{{route('menu')}}">Menus</a>
                                             <ul>
-                                                <li>
-                                                    <div class="mega-menu">
-                                                        <div class="menu-inner">
-                                                            <div class="auto-container">
-                                                                <div class="row clearfix">
-                                                                    <div class="menu-block col-lg-3 col-md-6 col-sm-6">
-                                                                        <div class="image"><a
-                                                                                href="menu-list-1.html"><img
-                                                                                    src="{{ asset('storage/images/resource/menu-image-1.jpg') }}"
-                                                                                    alt=""></a></div>
-                                                                        <div class="title"><a
-                                                                                href="menu-list-1.html">Category</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    {{-- <div class="menu-block col-lg-3 col-md-6 col-sm-6">
-                                                                        <div class="image"><a
-                                                                                href="menu-list-2.html"><img
-                                                                                    src="{{ asset('storage/images/resource/menu-image-2.jpg') }}"
-                                                                                    alt=""></a></div>
-                                                                        <div class="title"><a
-                                                                                href="menu-list-2.html">Menu list 2</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="menu-block col-lg-3 col-md-6 col-sm-6">
-                                                                        <div class="image"><a
-                                                                                href="menu-list-3.html"><img
-                                                                                    src="{{ asset('storage/images/resource/menu-image-3.jpg') }}"
-                                                                                    alt=""></a></div>
-                                                                        <div class="title"><a
-                                                                                href="menu-list-3.html">Menu list 3</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="menu-block col-lg-3 col-md-6 col-sm-6">
-                                                                        <div class="image"><a
-                                                                                href="menu-list-4.html"><img
-                                                                                    src="{{ asset('storage/images/resource/menu-image-4.jpg') }}"
-                                                                                    alt=""></a></div>
-                                                                        <div class="title"><a
-                                                                                href="menu-list-4.html">Menu list 4</a>
-                                                                        </div>
-                                                                    </div> --}}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                @foreach ($cats as $cat )
+                                                <li><a href="{{route('dish',$cat->id)}}">{{$cat->title}}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="our-chef.html">Our chefs</a></li>
-                                     
-                                        <li><a href="contact-us.html">Contact</a></li>
+                                        <li><a href="{{route('about')}}">About Us</a></li>
+                                        <li><a href="{{route('team')}}">Our chefs</a></li>
+
+                                        <li><a href="{{route('contact')}}">Contact</a></li>
                                     </ul>
                                 </nav>
                                 <!-- Main Menu End-->
@@ -159,7 +115,7 @@
 
                             <div class="links-box clearfix">
                                 <div class="link link-btn">
-                                    <a href="reservation-opentable.html" class="theme-btn btn-style-one clearfix">
+                                    <a href="{{route('table')}}" class="theme-btn btn-style-one clearfix">
                                         <span class="btn-wrap">
                                             <span class="text-one">find a table</span>
                                             <span class="text-two">find a table</span>
@@ -196,47 +152,114 @@
         </header>
         <!--End Main Header -->
 
+        <!--Menu Backdrop-->
+ <div class="menu-backdrop"></div>
+
+ <!-- Hidden Navigation Bar -->
+ <section class="hidden-bar">
+     <!-- Hidden Bar Wrapper -->
+     <div class="inner-box">
+         <div class="cross-icon hidden-bar-closer"><span class="far fa-close"></span></div>
+         <div class="logo-box"><a href="{{route('index')}}" title="Delici - Restaurants HTML Template"><img src="images/resource/sidebar-logo.png" alt="" title="Delici - Restaurants HTML Template"></a></div>
+
+         <!-- .Side-menu -->
+         <div class="side-menu">
+              <ul class="navigation clearfix">
+                 <li class="current"><a href="{{route('index')}}">Home</a>
+                 </li>
+                 <li class="dropdown"><a href="{{route('menu')}}">Menus</a>
+                     <ul>
+                        @foreach ($cats as $cat )
+                        <li><a href="{{route('dish',$cat->id)}}">{{$cat->title}}</a></li>
+                        @endforeach
+
+                     </ul>
+                 </li>
+                 <li><a href="{{route('about')}}">About Us</a></li>
+                 <li><a href="{{route('team')}}">Our chefs</a></li>
+                 <li><a href="{{route('contact')}}">Contact</a></li>
+             </ul>
+         </div><!-- /.Side-menu -->
+
+         <h2>Visit Us</h2>
+         <ul class="info">
+             <li>Restaurant</li>
+             <li>Open: 9.30 am - 2.30pm</li>
+             <li><a href="mailto:booking@domainame.com">booking@domainame.com</a></li>
+         </ul>
+         <div class="separator"><span></span></div>
+         <div class="booking-info">
+             <div class="bk-title">Booking request</div>
+             <div class="bk-no"><a href="tel:+88-123-123456">+88-123-123456</a></div>
+         </div>
+
+     </div><!-- / Hidden Bar Wrapper -->
+ </section>
+ <!-- / Hidden Bar -->
+
+ <!--Info Back Drop-->
+ <div class="info-back-drop"></div>
+
+ <!-- Hidden Bar -->
+ <section class="info-bar">
+     <div class="inner-box">
+         <div class="cross-icon"><span class="far fa-close"></span></div>
+         <div class="logo-box"><a href="{{route('index')}}" title="Delici - Restaurants HTML Template"><img src="images/resource/sidebar-logo.png" alt="" title="Delici - Restaurants HTML Template"></a></div>
+         <div class="image-box"><img src="images/resource/sidebar-image.jpg" alt="" title=""></div>
+
+         <h2>Visit Us</h2>
+         <ul class="info">
+             <li>Restaurant </li>
+             <li>Open: 9.30 am - 2.30pm</li>
+             <li><a href="mailto:booking@domainame.com">booking@domainame.com</a></li>
+         </ul>
+         <div class="separator"><span></span></div>
+         <div class="booking-info">
+             <div class="bk-title">Booking request</div>
+             <div class="bk-no"><a href="tel:+88-123-123456">+88-123-123456</a></div>
+         </div>
+     </div>
+ </section>
+ <!--End Hidden Bar -->
+
+
+
         @include('layouts.alert')
         @yield('content')
-
+<style>
+    .main-footer .info-col .inner:after {
+    background: url({{ asset('/storage/images/background/pattern-9.svg') }}) center repeat;
+}
+.main-footer .info-col .inner:before {
+    background: url({{ asset('/storage/images/background/pattern-9.svg') }}) center repeat;
+}
+.special-offer .outer-container:before {
+     background: url({{ asset('/storage/images/background/pattern-9.svg') }}) center repeat;
+}
+.special-offer .outer-container:after {
+    background: url({{ asset('storage/images/background/pattern-9.svg') }}) center repeat;
+}
+    </style>
          <!--Main Footer-->
-    <footer class="main-footer">
-        <div class="image-layer" style="background-image: url(images/background/image-4.jpg);"></div>
+    <footer class="main-footer" >
+        <div class="image-layer" style="background-image: url({{asset('/storage/images/background/image-4.jpg') }});"></div>
         <div class="upper-section">
             <div class="auto-container">
                 <div class="row clearfix">
                     <!--Footer Col-->
                     <div class="footer-col info-col col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inner wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image: url({{ asset('/storage/images/background/pattern-4.svg') }});">
                             <div class="content">
-                                <div class="logo"><a href="index.html" title=""><img src="images/logo.png" alt="" title=""></a></div>
+                                <div class="logo"><a href="{{route('index')}}" title=""><img src="{{ asset('/storage/uploads/logo/' . $logo->image) }}" alt="" title=""></a></div>
                                 <div class="info">
                                     <ul>
-                                        <li>Restaurant St, Delicious City, London 9578, UK</li>
+                                        <li>Restaurant </li>
                                         <li><a href="mailto:booking@domainname.com">booking@domainname.com</a></li>
                                         <li><a href="tel:+88-123-123456">Booking Request : +88-123-123456</a></li>
                                         <li>Open : 09:00 am - 01:00 pm</li>
                                     </ul>
                                 </div>
                                 <div class="separator"><span></span><span></span><span></span></div>
-                                <div class="newsletter">
-                                    <h3>Get News & Offers</h3>
-                                    <div class="text">Subscribe us & Get <span>25% Off.</span></div>
-                                    <div class="newsletter-form">
-                                        <form method="post" action="https://kalanidhithemes.com/live-preview/landing-page/delici/all-demo/Delici-Defoult/index.html">
-                                            <div class="form-group">
-                                                <span class="alt-icon far fa-envelope"></span>
-                                                <input type="email" name="email" value="" placeholder="Your email" required>
-                                                <button type="submit" class="theme-btn btn-style-one clearfix">
-                                                    <span class="btn-wrap">
-                                                        <span class="text-one">subscribe</span>
-                                                        <span class="text-two">subscribe</span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,11 +267,11 @@
                     <div class="footer-col links-col col-lg-3 col-md-6 col-sm-12">
                         <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <ul class="links">
-                                <li><a href="home.html">Home</a></li>
-                                <li><a href="menu-list-1.html">Menus</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="our-chef.html">Our chefs</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="{{route('index')}}">Home</a></li>
+                                <li><a href="{{route('menu')}}">Menus</a></li>
+                                <li><a href="{{route('about')}}">About us</a></li>
+                                <li><a href="{{route('team')}}">Our chefs</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -269,13 +292,13 @@
         </div>
         <div class="footer-bottom">
             <div class="auto-container">
-                <div class="copyright">&copy; 2022 Restaurt. All Rights Reserved   |    Crafted by <a href="https://themeforest.net/user/kalanidhithemes" target="blank">Kalanidhi Themes</a></div>
+                <div class="copyright">&copy; 2023 demo. All Rights Reserved   |    Crafted by </div>
             </div>
         </div>
     </footer>
 
 </div>
-<!--End pagewrapper--> 
+<!--End pagewrapper-->
 
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-up"></span></div>

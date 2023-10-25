@@ -22,7 +22,7 @@
                         @include('admin.layouts.alert')
 
                         <a href="{{ route('admin.login') }}" class="login-logo mb-1">
-                            <img src="{{ asset('/storage/images/logo.jpeg') }}" alt="{{ config('app.name') }}" />
+                            <img src="{{ asset('/storage/uploads/logo/' . $logo->image) }}" alt="{{ config('app.name') }}" />
                         </a>
                         <h5>Welcome back,<br />Please Login to Admin Account.</h5>
                         <form  action="{{ route('admin.login') }}" method="post">

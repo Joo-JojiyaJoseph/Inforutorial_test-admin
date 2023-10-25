@@ -32,14 +32,15 @@
                                     <th>Title</th>
                                     <th>category</th>
                                     <th>Amount</th>
-                                    <th>Offer</th>
-                                    <th>Price</th>
+                                    {{-- <th>Offer</th>
+                                    <th>Price</th> --}}
                                     {{-- <th>Stock</th>
                                     <th>Status</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($foods as $food)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -47,13 +48,13 @@
                                             <img src="{{ asset('/storage/uploads/food/' . $food->image) }}"
                                                 style="width: 100px; height: 50px">
                                         </td>
+                                        <td>{{ $food->fdtitle }}</td>
                                         <td>{{ $food->title }}</td>
-                                        <td>{{ $food->category }}</td>
                                         <td>{{ $food->amount }}</td>
-                                        <td>{{ $food->offer }}</td>
-                                        <td>{{ $food->price }}</td>
+                                        {{-- <td>{{ $food->offer }}</td>
+                                        <td>{{ $food->price }}</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                                                 data-target="#edit{{ $food->id }}">Edit</button>
                                             <a class="delete_btn btn btn-danger btn-block" data-action="{{ $food->id }}"
                                                 message="Delete the food">
@@ -99,19 +100,20 @@
 
                             <div class="col-md-6 mb-3">
                                 <label>Category</label>
+                                <select name="cat" class="form-control">
+                                    @foreach ($cats as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                    @endforeach
+                                   </select>
 
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Amount</label>
-                                <input type="text" class="form-control" name= <select name="cat">
-                                @foreach ($cats as $cat)
-                                <option value="{{$cat->id}}">{{$cat->title}}</option>
-                                @endforeach
-                               </select>"amount"
+                                <input type="text" class="form-control" name="amount"
                                     value="{{ old('amount') }}" required>
                                 @error('amount')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
-                            <div class="col-md-6 mb-3">
+                            {{-- <div class="col-md-6 mb-3">
                                 <label>Offer</label>
                                 <input type="text" class="form-control" name="offer"
                                     value="{{ old('offer') }}" required>
@@ -122,7 +124,7 @@
                                 <input type="text" class="form-control" name="price"
                                     value="{{ old('price') }}" required>
                                 @error('price')<span class="text-danger">{{ $message }}</span>@enderror
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-6 mb-3">
                                 <label>Image</label>
@@ -160,13 +162,13 @@
                                 <div class="col-md-6 mb-3">
                                     <label>Title</label>
                                     <input type="text" class="form-control" name="title"
-                                        value="{{ $food_edit->title }}">
+                                        value="{{ $food_edit->fdtitle }}">
                                     @error('title')<span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label>Category</label>
-                                    <select name="cat">
+                                    <select name="cat" class="form-control">
                                         @foreach ($cats as $cat)
                                         <option value="{{$cat->id}}"{{($cat->id==$food_edit->cat )?"selected":null}}>{{$cat->title}}</option>
                                         @endforeach
@@ -178,7 +180,7 @@
                                         value="{{ $food_edit->amount }}" required>
                                     @error('amount')<span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                {{-- <div class="col-md-6 mb-3">
                                     <label>Offer</label>
                                     <input type="text" class="form-control" name="offer"
                                         value="{{ $food_edit->offer }}" required>
@@ -189,7 +191,7 @@
                                     <input type="text" class="form-control" name="price"
                                         value="{{ $food_edit->price }}" required>
                                     @error('price')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6 mb-3">
                                     <label>Image</label>
                                     <input type="file" class="form-control" name="image">

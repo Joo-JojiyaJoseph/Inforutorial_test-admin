@@ -40,7 +40,7 @@
                                                 style="width: 100px; height: 50px">
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                                                 data-target="#edit{{ $cat->id }}">Edit</button>
 
                                             <a class="delete_btn btn btn-danger btn-block" data-action="{{ $cat->id }}"
