@@ -98,4 +98,43 @@
 
     @include('components.testimonial')
     @include('components.tablebooking')
+        <!--Recnt Updates Section-->
+        <section class="news-section">
+            <div class="auto-container">
+                <div class="title-box centered">
+                    <div class="subtitle"><span>recent updates</span></div>
+                    <div class="pattern-image"><img src="{{ asset('/storage/images/icons/separator.svg') }}" alt="" title=""></div>
+                    <h2>Upcoming Event</h2>
+                </div>
+                <div class="row justify-content-center clearfix">
+                    @foreach ($newss as $news)
+                    <!--Block-->
+                    <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                        <div class="inner-box wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="0ms">
+                            <div class="image-box">
+                                <div class="date"><span>{{ date('d M ', strtotime($news->date))}},{{  date('h:i A', strtotime($news->time)) }}</span></div>
+                                <div class="image"><a href="#"><img src="{{ asset('/storage/' . $news->image) }}" style="height: 300px" alt=""></a></div>
+                                <div class="over-content">
+                                    <div class="cat">{{ $news->title }}</div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+
+                <div class="lower-link-box text-center">
+                    <a href="{{route('contact')}}" class="theme-btn btn-style-two clearfix">
+                        <span class="btn-wrap">
+                            <span class="text-one">contact</span>
+                            <span class="text-two">contact</span>
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
 @endsection

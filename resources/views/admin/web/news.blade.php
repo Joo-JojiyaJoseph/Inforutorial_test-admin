@@ -28,7 +28,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>Link</th>
                                     <th>Description</th>
                                     <th>Image</th>
                                     <th>Time</th>
@@ -41,8 +40,6 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $news->title }}</td>
-
-                                        <td>{{ $news->link }}</td>
                                         <td>{{ $news->description }}</td>
                                         <td>{{  date('h:i A', strtotime($news->time)) }}</td>
                                         <td>{{ date('d M ', strtotime($news->date))}}</td>
@@ -96,12 +93,12 @@
                                     value="{{ old('first_title') }}" required>
                                 @error('title')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
-                            <div class="col-md-12 mb-3">
+                            {{-- <div class="col-md-12 mb-3">
                                 <label>link</label>
                                 <input type="text" class="form-control" name="link"
                                     value="{{ old('link') }}" required>
                                 @error('link')<span class="text-danger">{{ $message }}</span>@enderror
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-12 mb-3">
                                 <label>Time</label>
@@ -166,12 +163,12 @@
                                     @error('title')<span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
 
-                                <div class="col-md-12 mb-3">
+                                {{-- <div class="col-md-12 mb-3">
                                     <label> link</label>
                                     <input type="text" class="form-control" name="link"
                                         value="{{ $news->link }}">
                                     @error('link')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-12 mb-3">
                                     <label> Time</label>

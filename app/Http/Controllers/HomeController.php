@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Admin\News;
 use Illuminate\Http\Request;
 use App\Models\Admin\Slider;
 use Illuminate\Support\Facades\Mail;
@@ -9,8 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $newss = News::Orderby('id', 'desc')->get();
         $sliders = Slider::Orderby('id', 'desc')->get();
-        return view('index',compact('sliders'));
+        return view('index',compact('sliders','newss'));
     }
     public function about()
     {

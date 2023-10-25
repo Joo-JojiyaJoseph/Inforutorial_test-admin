@@ -55,7 +55,7 @@ class NewsController extends Controller
              'time' => $request->time,
              'date' => $request->date,
              'image' => $filename,
-             'link' => $request->link
+             'link' =>  "#",
          ]);
 
          return redirect(route('news.index'))->with('success', 'Added Successfully');
@@ -115,7 +115,7 @@ class NewsController extends Controller
             'image' => $filename,
             'time' => $request->time,
             'link' => $request->link,
-            'date' => $request->date,
+            'date' => "#",
         ]);
 
         return redirect(route('news.index'))->with('success', 'Updated Successfully');
