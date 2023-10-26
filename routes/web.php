@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::resource('Team', Admin\TeamController::class, ['names' => 'team']);
     Route::resource('About', Admin\AboutController::class, ['names' => 'about']);
     Route::resource('story', Admin\StoryController::class, ['names' => 'story']);
+    Route::resource('SpecialDish', Admin\SpecialDishController::class, ['names' => 'specialDish']);
     Route::get('/admin-home', [Admin\AdminHomeController::class, 'home'])->name('home.index');
   });
 
