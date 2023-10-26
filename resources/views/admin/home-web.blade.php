@@ -99,7 +99,7 @@
             </div>
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                <a href="">
+                <a href="{{ route('about.index') }}">
                     <div class="info-stats2">
                         <div class="info-icon danger"><i class="icon-layers2"></i></div>
                         <div class="sale-num"><h3>About</h3><p>Website About</p></div>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                <a href="">
+                <a href="{{route('team.index')}}">
                     <div class="info-stats2">
                         <div class="info-icon danger"><i class="icon-layers2"></i></div>
                         <div class="sale-num"><h3>Our Chef</h3><p>Website Chef</p></div>

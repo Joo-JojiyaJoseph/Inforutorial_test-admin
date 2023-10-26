@@ -47,6 +47,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::resource('News', Admin\NewsController::class, ['names' => 'news']);
     Route::resource('category', Admin\CategoryController::class, ['names' => 'category']);
     Route::resource('Food', Admin\FoodController::class, ['names' => 'food']);
+    Route::resource('Team', Admin\TeamController::class, ['names' => 'team']);
+    Route::resource('About', Admin\AboutController::class, ['names' => 'about']);
+    Route::resource('story', Admin\StoryController::class, ['names' => 'story']);
     Route::get('/admin-home', [Admin\AdminHomeController::class, 'home'])->name('home.index');
   });
 

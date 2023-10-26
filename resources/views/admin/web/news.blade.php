@@ -123,7 +123,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label>Image (790px * 560px)</label>
+                                <label>Image</label>
                                 <input type="file" class="form-control" name="image" required>
                                 @error('image')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
@@ -144,7 +144,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Slider</h5>
+                        <h5 class="modal-title">Edit News</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -185,20 +185,13 @@
                                 </div>
 
                                 <div class="col-md-12 mb-3">
-                                    <label> Title</label>
-                                    <input type="text" class="form-control" name="title"
-                                        value="{{ $news->title }}">
-                                    @error('title')<span class="text-danger">{{ $message }}</span>@enderror
-                                </div>
-
-                                <div class="col-md-12 mb-3">
                                     <label>Description</label>
                                     <textarea class="summernote" name="description" required> {{ $news->description }} </textarea>
                                     @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label>Image (1920px * 750px)</label>
+                                    <label>Image</label>
                                     <input type="file" class="form-control" name="image">
                                     @error('image')<span class="text-danger">{{ $message }}</span>@enderror
                                     <img src="{{ asset('/storage/' . $news->image) }}"
