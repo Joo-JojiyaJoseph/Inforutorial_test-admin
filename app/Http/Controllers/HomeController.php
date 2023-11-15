@@ -31,6 +31,16 @@ class HomeController extends Controller
     {
         return view('table');
     }
+
+    public function cart()
+    {
+        return view('cart');
+    }
+
+    public function checkout()
+    {
+        return view('checkout');
+    }
     public function dish($id)
     {
         $cat=$id;

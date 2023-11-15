@@ -72,15 +72,14 @@
                             <div class="inner-box">
                                 <div class="image"><a ><img src="{{ asset('/storage/uploads/food/' . $food->image) }}"
                                             alt=""></a></div>
-                                <h4><a href="">{{ $food->fdtitle }}</a></h4>
+                                <h4><a href="">{{ $food->fdtitle }},{{ $food->id }}</a></h4>
                                 {{-- <div class="text desc">Avocados with crab meat, red onion, crab salad red bell pepper...
                                 </div> --}}
                                 <div class="price">${{ $food->amount }}</div>
+                                <livewire:addtocart :food="$food"/>
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
 
                 <div class="lower-link-box text-center">

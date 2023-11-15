@@ -31,6 +31,9 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::post('/contact', [HomeController::class, 'contactPost'])->name('contact');
 Route::get('/menu', [HomeController::class, 'menu'])->name('menu');
+Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
+
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('/table', [HomeController::class, 'table'])->name('table');
 Route::get('/Dish{id}', [HomeController::class, 'dish'])->name('dish');
 

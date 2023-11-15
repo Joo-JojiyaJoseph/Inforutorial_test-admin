@@ -33,17 +33,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if(Logo::count() == 0 ) {
-        //     Logo::create([
-        //         'image' => 'logo',
-        //     ]);
-        // }
+        if(Logo::count() == 0 ) {
+            Logo::create([
+                'image' => 'logo',
+            ]);
+        }
 
-        // $testimonials = Testimonial::Orderby('id', 'desc')->get();
-        // $cats = Category::Orderby('id', 'desc')->get();
-        // $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        $testimonials = Testimonial::Orderby('id', 'desc')->get();
+        $cats = Category::Orderby('id', 'desc')->get();
+        $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
 
-        // $logo = Logo::first();
-        // View::share(compact('logo','cats','foods','testimonials'));
+        $logo = Logo::first();
+        View::share(compact('logo','cats','foods','testimonials'));
     }
 }
