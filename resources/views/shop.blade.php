@@ -40,4 +40,5 @@
     </section>
 
     @include('components.tablebooking')
+    @include('components.chef')
 @endsection

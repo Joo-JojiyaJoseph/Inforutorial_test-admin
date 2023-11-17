@@ -15,12 +15,21 @@ class SpecialDishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        if(SpecialDish::count() == 0 ) {
+            SpecialDish::create([
+                'dish_id' => 1,
+            ]);
+        }
+    }
+
     public function index()
     {
-        $specialDishs = SpecialDish::join('foods','foods.id','=','specialDishes.dish_id')->Orderby('id', 'desc')->select('foods.fdtitle','specialDishes.*')->first();
+        $specialDish = SpecialDish::join('food','food.id','=','special_dishes.dish_id')->Orderby('id', 'desc')->select('food.fdtitle','special_dishes.*')->first();
         $cats = Category::Orderby('id', 'desc')->get();
-       $specialDishs = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
-        return view('admin.web.specialDish',compact('cats','foods','specialDishs'));
+       $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+       return view('admin.web.specialDish',compact('cats','foods','specialDish'));
     }
 
     /**

@@ -110,7 +110,7 @@ class TeamController extends Controller
         'image' => $filename,
         ]);
 
-        return redirect(route('teams.index'))->with('success', 'Updated Successfully');
+        return redirect(route('team.index'))->with('success', 'Updated Successfully');
     }
 
     /**
@@ -125,6 +125,6 @@ class TeamController extends Controller
         Storage::delete('/public/'.$teams->image);
         Team::destroy($teams->id);
 
-        return redirect(route('teams.index'))->with('success', 'Deleted Successfully');
+        return redirect(route('team.index'))->with('success', 'Deleted Successfully');
     }
 }

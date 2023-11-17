@@ -9,7 +9,7 @@
 */
 
 
-/*** 
+/***
 
 ====================================================================
     Root Code Variables
@@ -20,11 +20,11 @@
 :root {
 
     /* #f25630 in decimal RGB */
-  --main-color: rgb(228,197,144);
-  
+  --main-color: #23bd6e;
+
   /* #ffffff in decimal RGB */
   --white-color:rgb(255,255,255);
-    
+
   /* #a7a7a7 in decimal RGB */
   --color-one: rgb(167,167,167);
 
@@ -48,10 +48,10 @@
 
   /* #121111 in decimal RGB */
   --color-eight: rgb(18,17,17);
-  
+
   /* #ffffff in decimal RGBA */
   --white-color-opacity:rgba(255,255,255,0.80);
-  
+
   /* #ffffff in decimal RGBA Two */
   --white-color-opacity-two:rgba(255,255,255,0.60);
 
@@ -63,13 +63,13 @@
 
   /* #ffffff in decimal RGBA Five */
   --white-color-opacity-five:rgba(255,255,255,0.10);
-  
+
   /* #000000 in decimal RGB */
   --black-color:rgb(0,0,0);
-  
+
   /* #000000 in decimal RGBA one */
   --black-color-opacity:rgba(0,0,0,0.80);
-  
+
   /* #000000 in decimal RGBA two */
   --black-color-opacity-two:rgba(0,0,0,0.60);
 
@@ -81,23 +81,23 @@
 
   /* #000000 in decimal RGBA Five */
   --black-color-opacity-five:rgba(0,0,0,0.10);
-  
+
   /* #ffffff in decimal RGB */
   --text-color:rgb(255,255,255);
-  
+
   /* #010101 Heading Color in decimal RGB */
   --heading-color:rgb(255,255,255);
 
   /* #171819 Body Bg Color in decimal RGB */
   --body-bg-color:rgb(23,24,25);
-  
+
   /* Fonts Variable */
   --font-family-DMsans: 'DM Sans', sans-serif;
-  
+
   --font-family-Forum: 'Forum', cursive;
-  
+
 /* Heading Fonts */
-  
+
   --font-8: 8px;
   --font-10: 10px;
   --font-12: 12px;
@@ -146,9 +146,9 @@
   --font-140: 140px;
   --font-150: 150px;
   --font-200: 200px;
-  
+
   --margin-zero: 0px;
-  
+
   /* Margin Left Variables */
   --margin-left-5: 5px;
   --margin-left-10: 10px;
@@ -178,7 +178,7 @@
   --margin-left-200: 200px;
   --margin-left-250: 250px;
   --margin-left-300: 300px;
-  
+
   /* Margin Top Variables */
   --margin-top-5: 5px;
   --margin-top-10: 10px;
@@ -208,7 +208,7 @@
   --margin-top-150: 150px;
   --margin-top-160: 160px;
   --margin-top-200: 200px;
-  
+
   /* Margin Right Variables */
   --margin-right-5: 5px;
   --margin-right-10: 10px;
@@ -232,7 +232,7 @@
   --margin-right-100: 100px;
   --margin-right-130: 130px;
   --margin-right-140: 140px;
-  
+
   /* Margin Bottom Variables */
   --margin-bottom-5: 5px;
   --margin-bottom-7: 7px;
@@ -259,10 +259,10 @@
   --margin-bottom-150: 150px;
   --margin-bottom-160: 160px;
   --margin-bottom-200: 200px;
-  
-  
+
+
   --padding-zero: 0px;
-  
+
   /* Padding Left Variables */
   --padding-left-0: 0px;
   --padding-left-5: 5px;
@@ -298,7 +298,7 @@
   --padding-left-200: 200px;
   --padding-left-210: 210px;
   --padding-left-220: 220px;
-  
+
   /* Padding Top Variables */
   --padding-top-0: 0px;
   --padding-top-5: 5px;
@@ -339,7 +339,7 @@
   --padding-top-240: 240px;
   --padding-top-250: 250px;
   --padding-top-300: 300px;
-  
+
   /* Padding Right Variables */
   --padding-right-0: 0px;
   --padding-right-5: 5px;
@@ -369,7 +369,7 @@
   --padding-right-170: 170px;
   --padding-right-200: 200px;
   --padding-right-250: 250px;
-  
+
   /* Padding Bottom Variables */
   --padding-bottom-0: 0px;
   --padding-bottom-5: 5px;
@@ -410,17 +410,17 @@
   --padding-bottom-250: 250px;
   --padding-bottom-300: 300px;
   --padding-bottom-340: 340px;
-  
+
 }
 
-/*** 
+/***
 
 ====================================================================
     Reset
 ====================================================================
 
  ***/
- 
+
 * {
     margin:0px;
     padding:0px;
@@ -430,7 +430,7 @@
     line-height: inherit;
 }
 
-/*** 
+/***
 
 ====================================================================
     Global Settings
@@ -523,7 +523,7 @@ input,select,button{
 
 textarea{
     overflow:hidden;
-    resize: none;   
+    resize: none;
 }
 
 button{
@@ -663,7 +663,7 @@ figure{
 
 .btn-style-one:hover .btn-wrap .text-two{
     top: 50%;
-    -webkit-transform: translateY(-50%); 
+    -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -673,7 +673,7 @@ figure{
 }
 
 .btn-style-one:hover{
-    
+
 }
 
 .btn-style-one:hover:before{
@@ -754,7 +754,7 @@ figure{
 
 .btn-style-two:hover .btn-wrap .text-two{
     top: 50%;
-    -webkit-transform: translateY(-50%); 
+    -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -764,7 +764,7 @@ figure{
 }
 
 .btn-style-two:hover{
-    
+
 }
 
 .btn-style-two:hover:before{
@@ -782,7 +782,7 @@ figure{
 img{
     display:inline-block;
     max-width:100%;
-    height:auto;    
+    height:auto;
 }
 
 .dropdown-toggle::after{
@@ -793,7 +793,7 @@ img{
     line-height: inherit;
 }
 
-/*** 
+/***
 
 ====================================================================
     Scroll To Top style

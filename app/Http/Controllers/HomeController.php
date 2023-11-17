@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\About;
+use App\Models\Admin\Category;
+use App\Models\Admin\Food;
 use App\Models\Admin\News;
 use Illuminate\Http\Request;
 use App\Models\Admin\Slider;
@@ -17,7 +20,8 @@ class HomeController extends Controller
     }
     public function about()
     {
-        return view('about');
+        $abouts = About::Orderby('id', 'desc')->first();
+        return view('about',compact('abouts'));
     }
     public function contact()
     {
@@ -33,21 +37,22 @@ class HomeController extends Controller
     }
     public function dish($id)
     {
-        $cat=$id;
-        return view('shop',compact('cat'));
+        $cat = Category::where('id',$id)->Orderby('id', 'asc')->first();
+        $dishes = Food::join('categories','categories.id','=','food.cat')->where('categories.id',$id)->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        return view('dish',compact('cat','dishes'));
     }
     public function menu()
     {
         return view('shop');
     }
 
-    public function contactPost(Request $request)
-    {
-        $subject = 'Contact Enquiry';
-        $message = 'Name : '.$request->name. '<br>Email : '.$request->email. '<br>Phone : '.$request->phone. '<br>Message : '.$request->message;
-        Mail::to('')->send(new Order($message, $subject));
-        return redirect(route('contact'))->with('status', 'Contact Enquiry  Successfully Submitted');
-    }
+    // public function contactPost(Request $request)
+    // {
+    //     $subject = 'Contact Enquiry';
+    //     $message = 'Name : '.$request->name. '<br>Email : '.$request->email. '<br>Phone : '.$request->phone. '<br>Message : '.$request->message;
+    //     Mail::to('')->send(new Order($message, $subject));
+    //     return redirect(route('contact'))->with('status', 'Contact Enquiry  Successfully Submitted');
+    // }
 
 
 }

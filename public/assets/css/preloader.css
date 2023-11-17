@@ -72,8 +72,8 @@
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke-width: 1px;
-  
-  -webkit-text-stroke-color: rgba(17, 17, 17, 0.5); 
+
+  -webkit-text-stroke-color: rgba(17, 17, 17, 0.5);
 }
 
 .handle-preloader .animation-preloader .txt-loading .letters-loading:nth-child(2):before {animation-delay: 0.2s;}
@@ -97,7 +97,7 @@
 }
 
 .handle-preloader .animation-preloader .txt-loading .letters-loading{
-  
+
 }
 
 .handle-preloader .animation-preloader .txt-loading .letters-loading:before{
@@ -106,7 +106,7 @@
 
 .handle-preloader .animation-preloader .spinner{
   border: 3px solid #ffffff;
-  border-top-color: rgba(17, 17, 17, 1); 
+  border-top-color: rgba(17, 17, 17, 1);
 }
 
 /* AnimaciÃƒÆ’Ã‚Â³n del preloader */

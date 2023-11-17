@@ -38,7 +38,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $about->title }}</td>
-                                        <td>{{ $about->description }}</td>
+                                        <td>c</td>
                                         <td>
                                             <img src="{{ asset('/storage/' . $about->image) }}"
                                                 style="width: 100px; height: 50px">

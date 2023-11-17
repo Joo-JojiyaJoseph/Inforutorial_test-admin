@@ -14,6 +14,19 @@ class StoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        if(Story::count() == 0 ) {
+            Story::create([
+                'title' => null,
+                'description' => null,
+                'image' => null,
+                'image1' => null,
+            ]);
+        }
+    }
+
     public function index()
     {
         $storys = Story::Orderby('id', 'desc')->get();
@@ -94,7 +107,6 @@ class StoryController extends Controller
     public function update(Request $request, $id)
     {
         $story = Story::find($id);
-
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -103,29 +115,29 @@ class StoryController extends Controller
         if ($request->hasFile('image')) {
             $request->validate(['image' => 'mimes:jpg,jpeg,png']);
             Storage::delete('/public/'.$story->image);
-            $filename = time().'.'.$request->file('image')->extension();
-            $request->image->storeAs('uploads/story', $filename, 'public');
-            $filename = 'uploads/story/'.$filename;
+            $filenames = time().'.'.$request->file('image')->extension();
+            $request->image->storeAs('uploads/story', $filenames, 'public');
+            $filenames = 'uploads/story/'.$filenames;
         } else {
-            $filename = $story->image;
+            $filenames = $story->image;
         }
 
 
-        if ($request->hasFile('image1')) {
-            $request->validate(['image1' => 'mimes:jpg,jpeg,png']);
-            Storage::delete('/public/'.$story->image1);
-            $filename1 = time().'.'.$request->file('image1')->extension();
-            $request->image1->storeAs('uploads/story', $filename1, 'public');
-            $filename1 = 'uploads/story/'.$filename1;
-        } else {
-            $filename1 = $story->image1;
-        }
+        // if ($request->hasFile('secondimage1')) {
+        //     $request->validate(['secondimage1' => 'mimes:jpg,jpeg,png']);
+        //     Storage::delete('/public/'.$story->secondimage1);
+        //     $secondfilename1 = time().'.'.$request->file('secondimage1')->extension();
+        //     $request->secondimage1->storeAs('uploads/story', $secondfilename1, 'public');
+        //     $secondfilename1 = 'uploads/story/'.$secondfilename1;
+        // } else {
+        //     $secondfilename1 = $story->secondimage1;
+        // }
 
         $story->update([
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $filename,
-            'image1' => $filename1,
+            'image' => $filenames,
+            // 'image1' => $secondfilename1,
         ]);
 
         return redirect(route('story.index'))->with('success', 'Updated Successfully');

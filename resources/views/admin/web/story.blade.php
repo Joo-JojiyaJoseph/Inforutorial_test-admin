@@ -12,10 +12,10 @@
             </div>
 
             <div class="col-xs-2 mb-2">
-                <a href="{{ route('dashboard', 'web') }}" class="btn btn-primary">Back</a>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+                <a href="{{ route('home.index') }}" class="btn btn-primary">Back</a>
+                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
                     ADD NEW
-                </button>
+                </button> --}}
             </div>
         </div>
 
@@ -30,7 +30,7 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Image</th>
-                                    <th>Image</th>
+                                    {{-- <th>Image</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,16 +38,16 @@
                                 @foreach ($storys as $story)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $story->title }}</td>
-                                        <td>{{ $story->description }}</td>
+                                        <td>{!! $story->title !!}</td>
+                                        <td>{!! $story->description !!}</td>
                                         <td>
                                             <img src="{{ asset('/storage/' . $story->image) }}"
                                                 style="width: 100px; height: 50px">
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <img src="{{ asset('/storage/' . $story->image1) }}"
                                                 style="width: 100px; height: 50px">
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                                                 data-target="#edit{{ $story->id }}">Edit</button>
@@ -161,13 +161,13 @@
                                         style="width: 100px; height: 50px; margin-top: 20px;">
                                 </div>
 
-                                <div class="col-md-6 mb-3">
+                                {{-- <div class="col-md-6 mb-3">
                                     <label>Image</label>
-                                    <input type="file" class="form-control" name="image1">
-                                    @error('image1')<span class="text-danger">{{ $message }}</span>@enderror
+                                    <input type="file" class="form-control" name="secondimage1">
+                                    @error('secondimage1')<span class="text-danger">{{ $message }}</span>@enderror
                                     <img src="{{ asset('/storage/' . $story->image1) }}"
                                         style="width: 100px; height: 50px; margin-top: 20px;">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 

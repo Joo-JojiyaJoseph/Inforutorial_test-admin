@@ -10,6 +10,9 @@ use App\Models\Admin\News;
 use App\Models\Admin\Product;
 use App\Models\Admin\Game;
 use App\Models\Admin\Logo;
+use App\Models\Admin\SpecialDish;
+use App\Models\Admin\Story;
+use App\Models\Admin\Team;
 use App\Models\Admin\Testimonial;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -33,17 +36,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if(Logo::count() == 0 ) {
-        //     Logo::create([
-        //         'image' => 'logo',
-        //     ]);
-        // }
-
-        // $testimonials = Testimonial::Orderby('id', 'desc')->get();
-        // $cats = Category::Orderby('id', 'desc')->get();
-        // $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
-
-        // $logo = Logo::first();
-        // View::share(compact('logo','cats','foods','testimonials'));
+        if(Logo::count() == 0 ) {
+            Logo::create([
+                'image' => 'logo',
+            ]);
+        }
+        $specialDish = SpecialDish::join('food','food.id','=','special_dishes.dish_id')->Orderby('id', 'desc')->select('food.*')->first();
+        $teams = Team::Orderby('id', 'desc')->get();
+        $testimonials = Testimonial::Orderby('id', 'desc')->get();
+        $cats = Category::Orderby('id', 'asc')->get();
+        $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        $story = Story::Orderby('id', 'desc')->first();
+        $logo = Logo::first();
+        View::share(compact('logo','cats','foods','testimonials','teams','story','specialDish'));
     }
 }

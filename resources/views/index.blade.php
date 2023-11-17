@@ -55,6 +55,10 @@
     </section>
     <!--End Banner Section -->
 
+    @include('components.ourstory')
+
+    @include('components.specialDish')
+
     <!--Special Offer Section-->
     <section class="special-offer">
         <div class="outer-container">
@@ -96,6 +100,11 @@
         </div>
     </section>
 
+    @include('components.strength')
+
+    @include('components.count')
+
+    @include('components.chef')
     @include('components.testimonial')
     @include('components.tablebooking')
         <!--Recnt Updates Section-->
