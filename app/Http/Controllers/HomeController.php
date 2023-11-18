@@ -35,6 +35,33 @@ class HomeController extends Controller
     {
         return view('table');
     }
+
+    public function cart()
+    {
+        return view('cart');
+    }
+
+    public function checkout()
+    {
+        return view('checkout');
+    }
+
+    public function add_to_cart($id)
+    {
+        $food = $id;
+        $quantity = 1;
+
+        $cart = session('cart', []);
+        if (isset($cart[$food])) {
+            $cart[$food] += $quantity;
+        } else {
+            $cart[$food] = $quantity;
+        }
+        session(['cart' => $cart]);
+        return redirect(route('cart'))->with('status', 'Added Successfully');
+
+    }
+
     public function dish($id)
     {
         $cat = Category::where('id',$id)->Orderby('id', 'asc')->first();

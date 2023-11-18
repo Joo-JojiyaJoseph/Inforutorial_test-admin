@@ -34,6 +34,7 @@
                         <h4><a >{{$dish->fdtitle}}</a></h4>
                         <div class="text desc">Avocados with crab meat, red onion, crab salad red bell pepper...</div>
                         <div class="price">${{$dish->amount}}</div>
+                        <livewire:addtocart :food="$dish"/>
                     </div>
                 </div>
                 @endforeach

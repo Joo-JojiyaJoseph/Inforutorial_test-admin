@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     @livewireStyles
+
 </head>
 
 <body>
@@ -85,9 +86,11 @@
                     <div class="main-box clearfix">
                         <!--Logo-->
                         <div class="logo-box">
-                            <div class="logo"><a href="{{route('index')}}" title=""><img
-                                        src="{{ asset('/storage/uploads/logo/' . $logo->image) }}" alt=""
-                                        title=""></a></div>
+                            <div class="logo"><a href="{{route('index')}}" title="">
+                                <img src="{{ asset('/storage/uploads/logo/' . $logo->image) }}" alt=""
+                                        title="">
+
+                                    </a></div>
                         </div>
 
                         <div class="nav-box clearfix">
@@ -111,10 +114,13 @@
                                     </ul>
                                 </nav>
                                 <!-- Main Menu End-->
+
                             </div>
                             <!--Nav Outer End-->
 
+
                             <div class="links-box clearfix">
+                                <livewire:cartbutton />
                                 <div class="link link-btn">
                                     <a href="{{route('table')}}" class="theme-btn btn-style-one clearfix">
                                         <span class="btn-wrap">
@@ -241,6 +247,7 @@
     background: url({{ asset('storage/images/background/pattern-9.svg') }}) center repeat;
 }
     </style>
+
          <!--Main Footer-->
     <footer class="main-footer" >
         <div class="image-layer" style="background-image: url({{asset('/storage/images/background/image-4.jpg') }});"></div>
@@ -315,5 +322,6 @@
 <script src="{{ asset('assets/js/wow.js') }}"></script>
 <script src="{{ asset('assets/js/parallax.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom-script.js') }}"></script>
+@livewireScripts
 </body>
 </html>

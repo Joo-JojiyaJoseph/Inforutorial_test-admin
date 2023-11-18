@@ -2,32 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Admin\Food;
 use Livewire\Component;
 
 class CartList extends Component
 {
-    public function index()
+    public $cartcount = '';
+    public function mount()
     {
-        $cart = session('cart', []);
-        return view('cart.index', compact('cart'));
-    }
-
-    public function addToCart(Request $request)
-    {
-        $productId = $request->input('product_id');
-        $quantity = $request->input('quantity');
 
         $cart = session('cart', []);
-
-        if (isset($cart[$productId])) {
-            $cart[$productId] += $quantity;
-        } else {
-            $cart[$productId] = $quantity;
-        }
-
-        session(['cart' => $cart]);
-
-        return redirect()->route('cart.index');
+        $this->cartcount=count($cart);
     }
 
     public function updateCart(Request $request)
@@ -36,6 +21,7 @@ class CartList extends Component
         $quantity = $request->input('quantity');
 
         $cart = session('cart', []);
+         $this->cartcount=count($cart);
 
         if ($quantity <= 0) {
             unset($cart[$productId]);
@@ -45,10 +31,12 @@ class CartList extends Component
 
         session(['cart' => $cart]);
 
-        return redirect()->route('cart.index');
+        // return redirect()->route('cart.index');
     }
     public function render()
     {
-        return view('livewire.cart-list');
+        $cart = session('cart', []);
+        $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        return view('livewire.cart-list', compact('cart'));
     }
 }
