@@ -1,4 +1,5 @@
    <!--Special Dish Section-->
+   @if($specialDish!=null)
    <section class="special-dish">
     <div class="bottom-image"><img src="{{ asset('/storage/images/resource/image-3.png') }}" alt="" title=""></div>
     <div class="outer-container">
@@ -39,4 +40,5 @@
         </div>
     </div>
 </section>
+@endif
 
