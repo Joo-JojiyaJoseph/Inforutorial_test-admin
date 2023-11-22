@@ -43,7 +43,23 @@ class HomeController extends Controller
 
     public function checkout()
     {
-        return view('checkout');
+        $totalamount=0;
+        $shipping=0;
+        $finalamount=0;
+        $carts=session('cart', []);
+        $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        foreach($carts as $productId => $quantity)
+        {
+            foreach( $foods as $food)
+            {
+                if($food->id==$productId)
+                {
+                    $totalamount=$totalamount+(($food->amount)*$quantity);
+                }
+            }
+        }
+        $finalamount=$finalamount+$totalamount+$shipping;
+        return view('checkout',compact('foods','carts','totalamount'));
     }
 
     public function add_to_cart($id)
@@ -71,6 +87,30 @@ class HomeController extends Controller
     public function menu()
     {
         return view('shop');
+    }
+
+    public function order(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'email',
+         ]);
+
+         $data = [
+             'name' => $request->name,
+             'phone' => $request->phone,
+             'email' => $request->email,
+             'address' => $request->address,
+             'country' => $request->country,
+             'state' => $request->state,
+             'zipcode' => $request->zipcode,
+             'type' => $request->type,
+             'user' =>"guest",
+         ];
+        // Order::create($data);
+
+    //     return redirect(route('menu'))->with('status', 'Order Placed Sucessfully, We Will contact you Soon.');
+       dd($data);
     }
 
     // public function contactPost(Request $request)

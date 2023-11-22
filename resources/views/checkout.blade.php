@@ -52,27 +52,23 @@
             <p class="text-xl font-medium">Order Summary</p>
             <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
             <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+                @foreach($cart as $productId => $quantity)
+                @foreach($foods as $food)
+                @if($food->id== $productId)
                 <div class="flex flex-col rounded-lg bg-white sm:flex-row">
                     <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
                         src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                         alt="" />
                     <div class="flex w-full flex-col px-4 py-4">
-                        <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-                        <span class="float-right text-gray-400">42EU - 8.5US</span>
-                        <p class="text-lg font-bold">$138.99</p>
+                        <span class="font-semibold">{{ $food->fdtitle }}</span>
+                        <span class="float-right text-gray-400">Quantity: {{$quantity}}</span>
+                        <p class="text-lg font-bold">{{ $food->amount * $quantity }}</p>
                     </div>
                 </div>
+                @endif
+                @endforeach
+                @endforeach
 
-                <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-                    <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                        src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                        alt="" />
-                    <div class="flex w-full flex-col px-4 py-4">
-                        <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-                        <span class="float-right text-gray-400">42EU - 8.5US</span>
-                        <p class="text-lg font-bold">$138.99</p>
-                    </div>
-                </div>
             </div>
 
             <p class="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -83,7 +79,7 @@
                     <span
                         class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                     <label
-                        class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                        class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-red-400 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                         for="radio_1">
                         <img class="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
                         <div class="ml-5">
@@ -116,7 +112,7 @@
                 <div class="relative">
                     <input type="text" id="Name" name="name"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Name" />
+                        placeholder="Name" required />
                 </div>
 
                 <label for="billing-address" class="mt-4 mb-2 block text-sm font-medium text-black"></label>
@@ -124,14 +120,14 @@
                     <div class="relative">
                         <input type="text" id="Phone" name="phone"
                             class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="Phone" />
+                            placeholder="Phone" required />
                         <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                         </div>
                     </div>
                     <div class="relative">
                         <input type="text" id="email" name="email"
                             class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="your.email@gmail.com" />
+                            placeholder="your.email@gmail.com" required/>
                         <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -142,21 +138,21 @@
                     </div>
                     <input type="text" id="address" name="address"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Address" />
+                        placeholder="Address" required/>
 
 
                     <input type="text" name="country"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Country" />
+                        placeholder="Country" required/>
                     <input type="text" name="state"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="State" />
+                        placeholder="State" required />
                     <input type="text" name="place"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Place" />
+                        placeholder="Place" required/>
                     <input type="text" name="zipcode"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="ZIP" />
+                        placeholder="ZIP" required/>
 
                 </div>
 
@@ -164,16 +160,16 @@
                 <div class="mt-6 border-t border-b py-2">
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                        <p class="font-semibold text-gray-900">$39.00</p>
+                        <p class="font-semibold text-gray-900">${{$totalamout}}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Shipping</p>
-                        <p class="font-semibold text-gray-900">$0.00</p>
+                        <p class="font-semibold text-gray-900">${{$shipping}}</p>
                     </div>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Total</p>
-                    <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+                    <p class="text-2xl font-semibold text-gray-900">${{$finalamount}}</p>
                 </div>
             </div>
         </form>

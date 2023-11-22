@@ -65,8 +65,11 @@
                 <span>Total cost</span>
                 <span>${{$totalamount}}</span>
               </div>
+              @if($cartcount>0)
               <a href="{{route('checkout')}}"><button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
-              </a></div>
+              </a>
+              @endif
+        </div>
           </div>
 
         </div>

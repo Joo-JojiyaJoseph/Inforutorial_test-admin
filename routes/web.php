@@ -36,6 +36,8 @@ Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/carts/{id}', [HomeController::class, 'add_to_cart'])->name('add_to_cart');
 
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+
+Route::get('/order', [HomeController::class, 'order'])->name('order');
 Route::get('/table', [HomeController::class, 'table'])->name('table');
 Route::get('/Dish{id}', [HomeController::class, 'dish'])->name('dish');
 
