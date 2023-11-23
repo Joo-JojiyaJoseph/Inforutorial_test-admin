@@ -39,7 +39,6 @@ class CartList extends Component
         // $totalamount=$totalamount+(($food->amount)*$quantity)
         $carts=session('cart', []);
         $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
-
         foreach($carts as $productId => $quantity)
         {
             foreach( $foods as $food)

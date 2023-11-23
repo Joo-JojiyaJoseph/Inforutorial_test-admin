@@ -52,30 +52,30 @@
             <p class="text-xl font-medium">Order Summary</p>
             <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
             <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-                @foreach($cart as $productId => $quantity)
-                @foreach($foods as $food)
-                @if($food->id== $productId)
-                <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-                    <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                        src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                        alt="" />
-                    <div class="flex w-full flex-col px-4 py-4">
-                        <span class="font-semibold">{{ $food->fdtitle }}</span>
-                        <span class="float-right text-gray-400">Quantity: {{$quantity}}</span>
-                        <p class="text-lg font-bold">{{ $food->amount * $quantity }}</p>
-                    </div>
-                </div>
-                @endif
+                @foreach ($carts as $productId => $quantity)
+                    @foreach ($foods as $food)
+                        @if ($food->id == $productId)
+                            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+                                <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                                    src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                                    alt="" />
+                                <div class="flex w-full flex-col px-4 py-4">
+                                    <span class="font-semibold">{{ $food->fdtitle }}</span>
+                                    <span class="float-right text-gray-400">Quantity: {{ $quantity }}</span>
+                                    <p class="text-lg font-bold">{{ $food->amount * $quantity }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 @endforeach
-                @endforeach
-
             </div>
 
             <p class="mt-8 text-lg font-medium">Shipping Methods</p>
-            <form method="POST"  class="mt-5 grid gap-6" action="">
-             @csrf
-                <div class="relative">
-                    <input class="peer hidden" id="radio_1" type="radio" name="type" checked />
+            <form method="POST" class="mt-5 grid gap-6" action="{{ route('order') }}">
+                @csrf
+                <input class="peer hidden" type="text" name="type" value="delivery" />
+                {{-- <div class="relative">
+                    <input class="peer hidden" type="radio" name="type" checked />
                     <span
                         class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                     <label
@@ -89,7 +89,7 @@
                     </label>
                 </div>
                 <div class="relative">
-                    <input class="peer hidden" id="radio_2" type="radio" name="type" checked />
+                    <input class="peer hidden" type="radio" name="type" checked />
                     <span
                         class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                     <label
@@ -100,34 +100,31 @@
                             <span class="mt-2 font-semibold">Pickup</span>
                         </div>
                     </label>
-                </div>
-            </form>
+                </div> --}}
         </div>
         <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
             <p class="text-xl font-medium text-black">Shipping Details</p>
             <p class="text-black">Complete your order by providing your payment details.</p>
-
             <div class="">
                 <label for="Name" class="mt-4 mb-2 block text-sm font-medium">Name</label>
                 <div class="relative">
-                    <input type="text" id="Name" name="name"
+                    <input type="text" name="name"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Name" required />
                 </div>
-
                 <label for="billing-address" class="mt-4 mb-2 block text-sm font-medium text-black"></label>
                 <div class="grid grid-cols-2 sm:flex-row gap-10">
                     <div class="relative">
-                        <input type="text" id="Phone" name="phone"
+                        <input type="text" name="phone"
                             class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Phone" required />
                         <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                         </div>
                     </div>
                     <div class="relative">
-                        <input type="text" id="email" name="email"
+                        <input type="text" name="email"
                             class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="your.email@gmail.com" required/>
+                            placeholder="your.email@gmail.com" required />
                         <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -136,44 +133,44 @@
                             </svg>
                         </div>
                     </div>
-                    <input type="text" id="address" name="address"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Address" required/>
-
+                    <input type="text" name="housename"
+                        class="w-full rounded-md border text-black border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="House Name" required />
 
                     <input type="text" name="country"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Country" required/>
+                        class="w-full rounded-md border text-black border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Country" required />
                     <input type="text" name="state"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        class="w-full rounded-md border text-black border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="State" required />
                     <input type="text" name="place"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Place" required/>
+                        class="w-full rounded-md border text-black border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Place" required />
                     <input type="text" name="zipcode"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="ZIP" required/>
-
+                        class="w-full rounded-md border text-black border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="ZIP" required />
                 </div>
 
                 <!-- Total -->
                 <div class="mt-6 border-t border-b py-2">
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                        <p class="font-semibold text-gray-900">${{$totalamout}}</p>
+                        <p class="font-semibold text-gray-900">${{ $totalamount }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Shipping</p>
-                        <p class="font-semibold text-gray-900">${{$shipping}}</p>
+                        <p class="font-semibold text-gray-900">${{ env('SHIPPING') }}</p>
                     </div>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Total</p>
-                    <p class="text-2xl font-semibold text-gray-900">${{$finalamount}}</p>
+                    <p class="text-2xl font-semibold text-gray-900">${{ $finalamount }}</p>
                 </div>
             </div>
-        </form>
-            <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
+
+            <button type="submit" class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place
+                Order</button>
         </div>
+        </form>
     </div>
 @endsection

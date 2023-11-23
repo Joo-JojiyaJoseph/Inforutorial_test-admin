@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\About;
+use App\Models\Admin\Address;
 use App\Models\Admin\Category;
 use App\Models\Admin\Food;
 use App\Models\Admin\News;
+use App\Models\Admin\Order;
 use Illuminate\Http\Request;
 use App\Models\Admin\Slider;
 use Illuminate\Support\Facades\Mail;
@@ -27,6 +29,11 @@ class HomeController extends Controller
     {
         return view('contact');
     }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
     public function team()
     {
         return view('team');
@@ -44,7 +51,6 @@ class HomeController extends Controller
     public function checkout()
     {
         $totalamount=0;
-        $shipping=0;
         $finalamount=0;
         $carts=session('cart', []);
         $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
@@ -58,8 +64,8 @@ class HomeController extends Controller
                 }
             }
         }
-        $finalamount=$finalamount+$totalamount+$shipping;
-        return view('checkout',compact('foods','carts','totalamount'));
+        $finalamount=$finalamount+$totalamount+env('SHIPPING');
+        return view('checkout',compact('foods','carts','totalamount','finalamount'));
     }
 
     public function add_to_cart($id)
@@ -96,21 +102,48 @@ class HomeController extends Controller
             'email' => 'email',
          ]);
 
+        $totalamount=0;$finalamount=0;
+        $carts=session('cart', []);
+        $product='';$quantitys='';$price='';
+        $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
+        foreach($carts as $productId => $quantity)
+        {
+        $product .= $productId.', ';
+        $quantitys .= $quantity.', ';
+            foreach( $foods as $food)
+            {
+                if($food->id==$productId)
+                {
+                    $totalamount=$totalamount+(($food->amount)*$quantity);
+                }
+            }
+        }
+        $finalamount=$finalamount+$totalamount+env('SHIPPING');
+
          $data = [
              'name' => $request->name,
              'phone' => $request->phone,
              'email' => $request->email,
-             'address' => $request->address,
+             'housename' => $request->housename,
              'country' => $request->country,
              'state' => $request->state,
              'zipcode' => $request->zipcode,
-             'type' => $request->type,
-             'user' =>"guest",
+             'user_id' =>"guest",
          ];
-        // Order::create($data);
+         $address_id=Address::create($data);
 
-    //     return redirect(route('menu'))->with('status', 'Order Placed Sucessfully, We Will contact you Soon.');
-       dd($data);
+         $data1 = [
+            'product' =>$product,
+            'quantity' =>$quantitys,
+            'totalamount' =>$finalamount,
+            'type' => $request->type,
+            'user' =>"guest",
+            'Status' => "new",
+            'address_id' =>$address_id->id,
+        ];
+        Order::create($data1);
+        return redirect(route('menu'))->with('status', 'Order Placed Sucessfully, We Will contact you Soon.');
+
     }
 
     // public function contactPost(Request $request)

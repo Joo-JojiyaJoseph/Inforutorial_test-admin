@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 'stock'=>0,
             ]);
         }
-            
+
 
         $specialDish = SpecialDish::join('food','food.id','=','special_dishes.dish_id')->Orderby('id', 'desc')->select('food.*')->first();
         $teams = Team::Orderby('id', 'desc')->get();

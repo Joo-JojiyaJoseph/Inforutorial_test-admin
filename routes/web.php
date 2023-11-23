@@ -26,24 +26,23 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::post('/contact', [HomeController::class, 'contactPost'])->name('contact');
 Route::get('/menu', [HomeController::class, 'menu'])->name('menu');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
-
 Route::get('/carts/{id}', [HomeController::class, 'add_to_cart'])->name('add_to_cart');
-
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
-
-Route::get('/order', [HomeController::class, 'order'])->name('order');
+Route::post('/order', [HomeController::class, 'order'])->name('order');
 Route::get('/table', [HomeController::class, 'table'])->name('table');
 Route::get('/Dish{id}', [HomeController::class, 'dish'])->name('dish');
 
 Route::get('/admin', [Admin\AdminController::class, 'index'])->name('admin.login');
 Route::post('/admin', [Admin\AdminController::class, 'login'])->name('admin.login');
 Route::get('/admin-logout', [Admin\AdminController::class, 'logout'])->name('admin.logout');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     Route::resource('profile', Admin\ProfileController::class, ['names' => 'profile']);
     Route::get('home/{type?}', [Admin\AdminHomeController::class, 'index'])->name('dashboard');

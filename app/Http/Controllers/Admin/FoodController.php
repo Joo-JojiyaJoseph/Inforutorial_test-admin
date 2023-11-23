@@ -60,7 +60,7 @@ class FoodController extends Controller
              'stock'=>0,
          ];
         Food::create($data);
-         return Back()->with('success', 'added');
+         return redirect(route('food.index'))->with('success', 'added');
     }
 
     /**
@@ -121,7 +121,7 @@ class FoodController extends Controller
 
 
         $foods->update($data);
-        return Back()->with('success', 'Updated Sucessfully');
+        return redirect(route('food.index'))->with('success', 'Updated Sucessfully');
     }
 
     /**
