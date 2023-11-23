@@ -24,12 +24,27 @@ class Adminorder extends Component
 
     public function packed($id)
     {
+        $update=Order::find($id);
+        $data = [
+            'status' => "packed",
+        ];
+        $update->update($data);
     }
     public function shipped($id)
     {
+        $update=Order::find($id);
+        $data = [
+            'status' => "shipped",
+        ];
+        $update->update($data);
     }
     public function delivered($id)
     {
+        $update=Order::find($id);
+        $data = [
+            'status' => "delivered",
+        ];
+        $update->update($data);
     }
 
     public function render()
