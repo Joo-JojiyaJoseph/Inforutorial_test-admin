@@ -19,23 +19,23 @@ class CartList extends Component
         $this->cartcount=count($this->cart);
     }
 
-    // public function updateCart(Request $request)
-    // {
-    //     $productId = $request->input('product_id');
-    //     $quantity = $request->input('quantity');
-    //     $cart = session('cart', []);
-    //      $this->cartcount=count($cart);
-    //     if ($quantity <= 0) {
-    //         unset($cart[$productId]);
-    //     } else {
-    //         $cart[$productId] = $quantity;
-    //     }
-    //     session(['cart' => $cart]);
-    //     // return redirect()->route('cart.index');
-    // }
+    public function updateCart($productid,$quantitys)
+    {
+        $productId =$productid;
+        $quantity = $quantitys;
+        $cart = session('cart', []);
+         $this->cartcount=count($cart);
+        if ($quantity <= 0) {
+            unset($cart[$productId]);
+        } else {
+            $cart[$productId] = $quantity;
+        }
+        session(['cart' => $cart]);
+        // return redirect()->route('cart.index');
+    }
 
     public function render()
-    {
+    { $this->totalamount=0;
         // $totalamount=$totalamount+(($food->amount)*$quantity)
         $carts=session('cart', []);
         $foods = Food::join('categories','categories.id','=','food.cat')->Orderby('food.id', 'desc')->select('food.*','categories.title')->get();
