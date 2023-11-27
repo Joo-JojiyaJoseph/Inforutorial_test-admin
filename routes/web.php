@@ -27,6 +27,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/my-account', [HomeController::class, 'myaccount'])->name('myaccount');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
@@ -38,7 +39,6 @@ Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::post('/order', [HomeController::class, 'order'])->name('order');
 Route::get('/table', [HomeController::class, 'table'])->name('table');
 Route::get('/Dish{id}', [HomeController::class, 'dish'])->name('dish');
-
 Route::get('/admin', [Admin\AdminController::class, 'index'])->name('admin.login');
 Route::post('/admin', [Admin\AdminController::class, 'login'])->name('admin.login');
 Route::get('/admin-logout', [Admin\AdminController::class, 'logout'])->name('admin.logout');

@@ -25,7 +25,6 @@
                 <div class="pattern-image"><img src="{{ asset('/storage/images/icons/separator.svg') }}" alt="" title=""></div>
                 <h3>A modern restaurant with a menu that will make your mouth water. Servicing delicious food <span class="theme_color">since 45 years</span>. Enjoy our seasonal menu and experience the beauty of naturalness</h3>
             </div>
-
         </div>
     </section>
 
@@ -63,7 +62,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

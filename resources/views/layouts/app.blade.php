@@ -110,13 +110,13 @@
                                         </li>
                                         <li><a href="{{ route('about') }}">About Us</a></li>
                                         <li><a href="{{ route('team') }}">Our chefs</a></li>
-
                                         <li><a href="{{ route('contact') }}">Contact</a></li>
                                         @guest
                                             <li><a href="{{ route('login') }}">Login</a></li>
                                         @endguest
                                         @auth
-                                        <div class="mt-3 space-y-1">
+                                        <li><a href="{{ route('myaccount') }}">My Account</a></li>
+                                        {{-- <div class="mt-3 space-y-1">
                                             <!-- Authentication -->
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
@@ -126,7 +126,7 @@
                                                     {{ __('Log Out') }}
                                                 </x-responsive-nav-link>
                                             </form>
-                                        </div>
+                                        </div> --}}
                                         @endauth
                                     </ul>
                                 </nav>
@@ -165,9 +165,7 @@
                                     </span>
                                 </button>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

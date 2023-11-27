@@ -34,6 +34,11 @@ class HomeController extends Controller
     {
         return view('auth.login');
     }
+
+    public function myaccount()
+    {
+        return view('dashboard');
+    }
     public function team()
     {
         return view('team');
