@@ -10,10 +10,14 @@ use App\Models\Admin\News;
 use App\Models\Admin\Order;
 use Illuminate\Http\Request;
 use App\Models\Admin\Slider;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Livewire\WithPagination;
 
 class HomeController extends Controller
 {
+    use WithPagination;
     public function index()
     {
         $newss = News::Orderby('id', 'desc')->get();
@@ -37,7 +41,12 @@ class HomeController extends Controller
 
     public function myaccount()
     {
-        return view('dashboard');
+        $auth=Auth::user();
+        $user=User::find($auth->id);
+        $orders = Order::join('addresses','addresses.id','=','orders.address_id')
+        ->where('user',$user->id)
+        ->Orderby('orders.id', 'desc')->select('orders.*','addresses.name','addresses.phone','addresses.email','addresses.housename','addresses.country','addresses.state','addresses.zipcode')->paginate(10);
+        return view('dashboard',compact('user','orders'));
     }
     public function team()
     {
