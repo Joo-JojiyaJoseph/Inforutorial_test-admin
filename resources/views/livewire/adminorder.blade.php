@@ -35,7 +35,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>CH0X0{{ $order->id}}</td>
-
                                     <td>
                                         @if($order->status=="new")
                                         <button  wire:click="packed" type="button" class="btn btn-primary btn-block">Pack</button>
@@ -46,7 +45,6 @@
                                         @else
                                         <p>Delivered</p>
                                     </td>
-
                                 </tr>
                                 @empty
                                 <tr class="text-gray-700">

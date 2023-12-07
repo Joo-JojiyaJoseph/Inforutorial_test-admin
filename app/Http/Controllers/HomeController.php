@@ -111,7 +111,6 @@ class HomeController extends Controller
 
     public function order(Request $request)
     {
-
         $request->validate([
             'email' => 'email',
          ]);

@@ -2,7 +2,6 @@
 @section('content')
     <!-- Banner Section -->
     <section class="banner-section">
-
         <div class="banner-container">
             <div class="banner-slider">
                 <div class="swiper-wrapper">
@@ -35,7 +34,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +46,6 @@
                 <div class="swiper-button-next"><span class="fal fa-angle-right"></span></div>
             </div>
         </div>
-
         <div class="book-btn"><a href="" class="theme-btn"><span class="icon"><img
                         src="{{ asset('storage/images/resource/book-icon-1.png') }}" alt=""
                         title=""></span><span class="txt">book a table</span></a></div>
@@ -56,7 +53,6 @@
     <!--End Banner Section -->
 
     @include('components.ourstory')
-
     @include('components.specialDish')
 
     <!--Special Offer Section-->
@@ -94,15 +90,12 @@
                         </span>
                     </a>
                 </div>
-
             </div>
         </div>
     </section>
 
     @include('components.strength')
-
     @include('components.count')
-
     @include('components.chef')
     @include('components.testimonial')
     @include('components.tablebooking')
@@ -129,7 +122,6 @@
                         </div>
                     </div>
                     @endforeach
-
                 </div>
 
                 <div class="lower-link-box text-center">
@@ -140,9 +132,6 @@
                         </span>
                     </a>
                 </div>
-
             </div>
         </section>
-
-
 @endsection
