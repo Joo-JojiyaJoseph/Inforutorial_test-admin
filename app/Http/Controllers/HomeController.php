@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use App\Models\Admin\About;
 use App\Models\Admin\Address;
 use App\Models\Admin\Category;
@@ -159,13 +160,13 @@ class HomeController extends Controller
 
     }
 
-    // public function contactPost(Request $request)
-    // {
-    //     $subject = 'Contact Enquiry';
-    //     $message = 'Name : '.$request->name. '<br>Email : '.$request->email. '<br>Phone : '.$request->phone. '<br>Message : '.$request->message;
-    //     Mail::to('')->send(new Order($message, $subject));
-    //     return redirect(route('contact'))->with('status', 'Contact Enquiry  Successfully Submitted');
-    // }
+    public function contactPost(Request $request)
+    {
+        $subject = 'Contact Enquiry';
+        $message = 'Name : '.$request->name. '<br>Email : '.$request->email. '<br>Phone : '.$request->phone. '<br>Message : '.$request->message;
+        Mail::to('')->send(new Contact('',$message, $subject));
+        return redirect(route('contact'))->with('status', 'Contact Enquiry  Successfully Submitted');
+    }
 
 
 }

@@ -57,12 +57,12 @@
                         @if ($food->id == $productId)
                             <div class="flex flex-col rounded-lg bg-white sm:flex-row">
                                 <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                                    src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                                    src="{{ asset('/storage/uploads/food/' . $food->image) }}"
                                     alt="" />
                                 <div class="flex w-full flex-col px-4 py-4">
-                                    <span class="font-semibold">{{ $food->fdtitle }}</span>
-                                    <span class="float-right text-gray-400">Quantity: {{ $quantity }}</span>
-                                    <p class="text-lg font-bold">{{ $food->amount * $quantity }}</p>
+                                    <span class="font-semibold text-black">{{ $food->fdtitle }}</span>
+                                    <span class="float-right text-black">Quantity: {{ $quantity }}</span>
+                                    <p class="text-lg font-bold text-black">{{ $food->amount * $quantity }}</p>
                                 </div>
                             </div>
                         @endif
@@ -73,7 +73,11 @@
             <p class="mt-8 text-lg font-medium">Shipping Methods</p>
             <form method="POST" class="mt-5 grid gap-6" action="{{ route('order') }}">
                 @csrf
-                <input class="peer hidden" type="text" name="type" value="delivery" />
+                <input class="peer hidden " type="text" name="type" value="delivery" />
+                <div class="ml-5 bg-white p-10">
+                    <span class="mt-2 font-semibold text-black">Cash On Delivery</span>
+                    <p class="text-black text-sm leading-6">Delivery: 2-4 Days</p>
+                </div>
                 {{-- <div class="relative">
                     <input class="peer hidden" type="radio" name="type" checked />
                     <span

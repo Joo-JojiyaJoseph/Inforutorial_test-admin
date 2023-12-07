@@ -48,7 +48,6 @@ class CartList extends Component
                     $this->totalamount=$this->totalamount+(($food->amount)*$quantity);
                 }
             }
-
         }
        $this->cart = session('cart', []);
        return view('livewire.cart-list');

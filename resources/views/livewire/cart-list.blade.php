@@ -22,7 +22,7 @@
             <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                 <div class="flex w-2/5"> <!-- product -->
                   <div class="w-20">
-                    <img class="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt="">
+                    <img class="h-24" src="{{ asset('/storage/uploads/food/' . $food->image) }}" alt="">
                   </div>
                   <div class="flex flex-col justify-between ml-4 flex-grow">
                     {{-- <span class="font-bold text-sm">{{ $productId }}</span> --}}
@@ -63,10 +63,17 @@
                 <span>Total cost</span>
                 <span>${{$totalamount}}</span>
               </div>
+              @auth
               @if($cartcount>0)
               <a href="{{route('checkout')}}"><button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
               </a>
               @endif
+              @endauth
+              @guest
+              <a href="{{route('login')}}"><button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+              </a>
+              @endguest
+
         </div>
           </div>
 

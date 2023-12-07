@@ -13,21 +13,23 @@
                             </div>
                             <div class="default-form reservation-form">
                                 <form method="post" >
+                                    @csrf
                                     <div class="row clearfix">
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <div class="field-inner">
-                                                <input type="text" name="fieldname" value="" placeholder="Your Name" required>
+                                                <input type="text" name="name" value="" placeholder="Your Name" required>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <div class="field-inner">
-                                                <input type="text" name="fieldname" value="" placeholder="Phone Number" required>
+                                                <input type="text" name="phone" value="" placeholder="Phone Number" required>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                             <div class="field-inner">
                                                 <span class="alt-icon far fa-user"></span>
-                                                <select class="l-icon">
+                                                <input type="number" name="person" value="1" placeholder="No of Person" required>Person
+                                                <select class="l-icon" name="person">
                                                     <option>1 Person</option>
                                                     <option>2 Person</option>
                                                     <option>3 Person</option>
@@ -42,13 +44,14 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                             <div class="field-inner">
                                                 <span class="alt-icon far fa-calendar"></span>
-                                                <input class="l-icon datepicker" type="text" name="fieldname" value="" placeholder="DD-MM-YYYY" required readonly>
+                                                <input class="l-icon datepicker" type="date" name="date" value="" placeholder="DD-MM-YYYY" required readonly>
                                                 <span class="arrow-icon far fa-angle-down"></span>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12 col-sm-12">
                                             <div class="field-inner">
                                                 <span class="alt-icon far fa-clock"></span>
+                                                <input class="l-icon datepicker" type="time" name="time" value="" placeholder="DD-MM-YYYY" required readonly>
                                                 <select class="l-icon">
                                                     <option>08 : 00 am</option>
                                                     <option>09 : 00 am</option>
@@ -66,12 +69,13 @@
                                                     <option>09 : 00 pm</option>
                                                     <option>10 : 00 pm</option>
                                                 </select>
+
                                                 <span class="arrow-icon far fa-angle-down"></span>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                             <div class="field-inner">
-                                                <textarea name="fieldname" placeholder="Message" required></textarea>
+                                                <textarea name="message" placeholder="Message" required></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
