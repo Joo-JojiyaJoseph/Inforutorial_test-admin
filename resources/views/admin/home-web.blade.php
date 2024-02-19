@@ -24,7 +24,7 @@
             </div> --}}
 
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
-                <a href="">
+                <a href="{{ route('orders') }}">
                     <div class="info-stats2">
                         <div class="info-icon danger"><i class="icon-layers2"></i></div>
                         <div class="sale-num"><h3>New order</h3><p>Website order</p></div>
